@@ -11,6 +11,7 @@ import com.sulitsa.dev.megamindgames.R
 import com.sulitsa.dev.megamindgames.databinding.MenuViewScreenBinding
 import com.sulitsa.dev.megamindgames.presentation.injectDependencies
 import com.sulitsa.dev.megamindgames.presentation.navigateTo
+import com.sulitsa.dev.megamindgames.util.Formatter
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -48,7 +49,7 @@ class MenuViewScreen : Fragment() {
     }
 
     private fun configureViewsByState(state: MenuState) {
-        binding.coinCountTextView.text = state.currentCoinsCount.toString()
+        binding.coinCountTextView.text = Formatter.formatCoins(coins = state.currentCoinsCount)
     }
 
     private fun configureClickListeners() {

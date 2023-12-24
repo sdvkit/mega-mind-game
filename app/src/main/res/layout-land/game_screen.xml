@@ -18,15 +18,14 @@
 
     <TextView
         android:id="@+id/timerTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/timer_text_width"
         android:layout_height="wrap_content"
-        android:minWidth="@dimen/timer_text_min_width"
         android:layout_marginStart="-40dp"
         android:background="@drawable/timer_state"
         android:fontFamily="@font/inter_medium"
         android:paddingStart="@dimen/padding_big"
         android:paddingTop="@dimen/padding_extra_small"
-        android:paddingEnd="@dimen/padding_medium"
+        android:paddingEnd="@dimen/padding_small"
         android:paddingBottom="@dimen/padding_extra_small"
         android:text="@string/zero_value"
         android:textColor="?attr/colorOnSurfaceVariant"
@@ -65,9 +64,9 @@
         android:layout_width="@dimen/game_cells_grid_land_width"
         android:layout_height="@dimen/game_cells_grid_land_height"
         android:columnCount="5"
+        android:layout_marginEnd="@dimen/padding_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

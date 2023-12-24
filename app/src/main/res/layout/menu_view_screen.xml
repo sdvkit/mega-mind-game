@@ -6,11 +6,12 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="@dimen/settings_button_size"
-        android:layout_height="@dimen/settings_button_size"
-        android:layout_margin="@dimen/padding_big"
-        android:background="@null"
+        android:layout_width="@dimen/privacy_policy_button_size"
+        android:layout_height="@dimen/privacy_policy_button_size"
+        android:layout_marginTop="@dimen/padding_big"
+        android:layout_marginStart="@dimen/padding_medium"
         android:src="@drawable/settings"
+        android:background="@drawable/default_button_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,9 +21,9 @@
         android:layout_height="@dimen/coin_icon_size"
         android:layout_marginEnd="@dimen/padding_small"
         android:src="@drawable/ic_coin_512"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+        app:layout_constraintBottom_toBottomOf="@+id/coinCountTextView"
         app:layout_constraintEnd_toStartOf="@+id/coinCountTextView"
-        app:layout_constraintTop_toTopOf="@+id/imageButton" />
+        app:layout_constraintTop_toTopOf="@+id/coinCountTextView" />
 
     <TextView
         android:id="@+id/coinCountTextView"
@@ -66,7 +67,7 @@
         android:layout_width="@dimen/privacy_policy_button_size"
         android:layout_height="@dimen/privacy_policy_button_size"
         android:layout_margin="@dimen/padding_small"
-        android:background="@drawable/privacy_policy_background"
+        android:background="@drawable/default_button_background"
         android:src="@drawable/privacy_policy"
         app:layout_constraintEnd_toEndOf="@+id/imageButton"
         app:layout_constraintStart_toStartOf="@+id/imageButton"

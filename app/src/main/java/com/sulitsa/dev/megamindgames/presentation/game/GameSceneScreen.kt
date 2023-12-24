@@ -15,6 +15,7 @@ import com.sulitsa.dev.megamindgames.databinding.GameScreenBinding
 import com.sulitsa.dev.megamindgames.domain.model.Gem
 import com.sulitsa.dev.megamindgames.presentation.common.GameCellItem
 import com.sulitsa.dev.megamindgames.presentation.injectDependencies
+import com.sulitsa.dev.megamindgames.util.Formatter
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -54,7 +55,7 @@ class GameSceneScreen : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun configureViewsByState(state: GameSceneState) {
-        binding.timerTextView.text = "00:${state.timerValue}"
+        binding.timerTextView.text = Formatter.formatSeconds(seconds = state.timerValue)
 
         if (gems != state.gems) {
             gems = state.gems

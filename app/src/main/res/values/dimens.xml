@@ -12,7 +12,7 @@
     <dimen name="text_size_medium">20sp</dimen>
     <dimen name="text_size_big">24sp</dimen>
     <dimen name="max_text_width">100dp</dimen>
-    <dimen name="timer_text_min_width">100dp</dimen>
+    <dimen name="timer_text_width">155dp</dimen>
 
     <!-- Icons -->
     <dimen name="launcher_icon_size">45dp</dimen>
@@ -20,7 +20,7 @@
     <dimen name="game_logo_size">160dp</dimen>
     <dimen name="coin_icon_size">40dp</dimen>
     <dimen name="privacy_policy_icon_size">40dp</dimen>
-    <dimen name="timer_icon_size">50dp</dimen>
+    <dimen name="timer_icon_size">56dp</dimen>
 
     <!-- Buttons -->
     <dimen name="play_button_height">60dp</dimen>

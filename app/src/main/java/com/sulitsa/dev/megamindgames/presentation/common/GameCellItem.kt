@@ -49,6 +49,10 @@ class GameCellItem(
 
     fun setGemEnabled(isEnabled: Boolean) {
         gem!!.isEnabled = isEnabled
+
+        if (!gem!!.isEnabled) {
+            visibility = View.INVISIBLE
+        }
     }
 
     override fun equals(other: Any?): Boolean {
@@ -62,6 +66,7 @@ class GameCellItem(
         var result = binding.hashCode()
         result = 31 * result + (gem?.hashCode() ?: 0)
         result = 31 * result + isClickAvailable.hashCode()
+        result = 31 * result + isCellEnabled.hashCode()
         return result
     }
 }
