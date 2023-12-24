@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/menuViewScreen">
+
+    <fragment
+        android:id="@+id/menuViewScreen"
+        android:name="com.sulitsa.dev.megamindgames.presentation.menu.MenuViewScreen"
+        android:label="MenuViewScreen" >
+        <action
+            android:id="@+id/action_menuViewScreen_to_gameSceneScreen"
+            app:destination="@id/gameSceneScreen"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/menuViewScreen"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/gameSceneScreen"
+        android:name="com.sulitsa.dev.megamindgames.presentation.game.GameSceneScreen"
+        android:label="GameSceneScreen" />
+</navigation>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MegaMindGames</string>
+    <string name="zero_value">0</string>
+    <string name="play">Play</string>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/game_cell_size"
+    android:layout_height="@dimen/game_cell_size"
+    android:padding="@dimen/padding_extra_small"
+    android:background="@drawable/game_cell_background">
+
+    <ImageView
+        android:id="@+id/cellItemImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:src="@drawable/ic_gem_1_512"/>
+
+</LinearLayout>

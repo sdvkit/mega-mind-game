@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- paddings -->
+    <dimen name="padding_extra_small">8dp</dimen>
+    <dimen name="padding_small">16dp</dimen>
+    <dimen name="padding_medium">32dp</dimen>
+    <dimen name="padding_big">56dp</dimen>
+
+    <!-- text-size -->
+    <dimen name="text_size_small">10sp</dimen>
+    <dimen name="text_size_medium_smaller">16sp</dimen>
+    <dimen name="text_size_medium">20sp</dimen>
+    <dimen name="text_size_big">24sp</dimen>
+    <dimen name="max_text_width">100dp</dimen>
+    <dimen name="timer_text_min_width">100dp</dimen>
+
+    <!-- Icons -->
+    <dimen name="launcher_icon_size">45dp</dimen>
+    <dimen name="launcher_background_size">100dp</dimen>
+    <dimen name="game_logo_size">160dp</dimen>
+    <dimen name="coin_icon_size">40dp</dimen>
+    <dimen name="privacy_policy_icon_size">40dp</dimen>
+    <dimen name="timer_icon_size">50dp</dimen>
+
+    <!-- Buttons -->
+    <dimen name="play_button_height">60dp</dimen>
+    <dimen name="play_button_width">180dp</dimen>
+    <dimen name="settings_button_size">32dp</dimen>
+    <dimen name="privacy_policy_button_size">56dp</dimen>
+
+    <!-- Radius -->
+    <dimen name="radius_medium">18dp</dimen>
+    <dimen name="radius_bid">32dp</dimen>
+
+    <!-- Another -->
+    <dimen name="game_cell_size">72dp</dimen>
+    <dimen name="game_cells_grid_default_width">350dp</dimen>
+    <dimen name="game_cells_grid_default_height">440dp</dimen>
+
+    <!-- Land -->
+    <dimen name="game_cells_grid_land_width">400dp</dimen>
+    <dimen name="game_cells_grid_land_height">320dp</dimen>
+</resources>
