@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import android.widget.GridLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -14,7 +13,11 @@ import com.sulitsa.dev.megamindgames.R
 import com.sulitsa.dev.megamindgames.databinding.GameScreenBinding
 import com.sulitsa.dev.megamindgames.domain.model.Gem
 import com.sulitsa.dev.megamindgames.presentation.common.GameCellItem
+import com.sulitsa.dev.megamindgames.presentation.currentNavDestination
 import com.sulitsa.dev.megamindgames.presentation.injectDependencies
+import com.sulitsa.dev.megamindgames.presentation.navigateTo
+import com.sulitsa.dev.megamindgames.util.AnimUtil
+import com.sulitsa.dev.megamindgames.util.Constants
 import com.sulitsa.dev.megamindgames.util.Formatter
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -57,6 +60,8 @@ class GameSceneScreen : Fragment() {
     private fun configureViewsByState(state: GameSceneState) {
         binding.timerTextView.text = Formatter.formatSeconds(seconds = state.timerValue)
 
+        checkIfGameIsFinished(state = state)
+
         if (gems != state.gems) {
             gems = state.gems
             fillGameCellsGrid(gems = gems, savedGameCellItems = state.gameCellItems)
@@ -65,6 +70,19 @@ class GameSceneScreen : Fragment() {
         for (index in 0 until binding.gameCellsGridLayout.childCount) {
             val gameCell = binding.gameCellsGridLayout.getChildAt(index) as GameCellItem
             gameCell.isClickAvailable = state.isUiAvailable
+        }
+    }
+
+    private fun checkIfGameIsFinished(state: GameSceneState) {
+        if (state.isGameFinished && currentNavDestination() == this.javaClass.simpleName) {
+            gameSceneViewModel.onEvent(GameSceneEvent.StopTimer)
+
+            navigateTo(
+                resId = R.id.action_gameSceneScreen_to_endGamePopupScreen,
+                args = Bundle().apply {
+                    putInt(Constants.TIMER_VALUE_ARG_KEY, state.timerValue)
+                }
+            )
         }
     }
 
@@ -88,12 +106,20 @@ class GameSceneScreen : Fragment() {
 
         gems.forEach { gem ->
             val gameCellItem = GameCellItem(context = context)
-
             setGameCellItemLayoutParams(gameCellItem = gameCellItem)
 
             gameCellItem.setGem(gem = gem)
             gameCellItem.setOnItemClickListener {
-                val event = GameSceneEvent.TriggerGameCell(gameCell = gameCellItem)
+                AnimUtil.playGameCellItemRotationAnim(gameCellItem = gameCellItem)
+
+                val event = GameSceneEvent.TriggerGameCell(
+                    gameCell = gameCellItem,
+                    ifGemsAreDifferentAction = { gameCellItem1, gameCellItem2 ->
+                        AnimUtil.playGameCellItemRotationAnim(gameCellItem = gameCellItem1)
+                        AnimUtil.playGameCellItemRotationAnim(gameCellItem = gameCellItem2)
+                    }
+                )
+
                 gameSceneViewModel.onEvent(event)
             }
 
@@ -113,7 +139,9 @@ class GameSceneScreen : Fragment() {
     }
 
     private fun configureTimerAnimation() {
-        val animation = AnimationUtils.loadAnimation(requireContext(), R.anim.timer_rotation_anim)
-        binding.timerImageView.startAnimation(animation)
+        AnimUtil.playTimerRotationAnim(
+            view = binding.timerImageView,
+            context = requireContext()
+        )
     }
 }

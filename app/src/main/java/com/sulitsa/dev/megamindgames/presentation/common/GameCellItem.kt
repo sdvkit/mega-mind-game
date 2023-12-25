@@ -47,6 +47,8 @@ class GameCellItem(
         binding.cellItemImageView.visibility = View.INVISIBLE
     }
 
+    fun getGemId(): Int = gem!!.id
+
     fun setGemEnabled(isEnabled: Boolean) {
         gem!!.isEnabled = isEnabled
 
@@ -54,6 +56,8 @@ class GameCellItem(
             visibility = View.INVISIBLE
         }
     }
+
+    fun isGemEnabled(): Boolean = gem!!.isEnabled
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

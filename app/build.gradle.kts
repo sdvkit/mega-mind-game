@@ -41,10 +41,6 @@ android {
 
 dependencies {
 
-    // Gson
-    val gsonVersion = "2.10.1"
-    implementation("com.google.code.gson:gson:$gsonVersion")
-
     // Jetpack navigation
     val navVersion = "2.7.6"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")

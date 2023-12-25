@@ -8,5 +8,6 @@ data class GameSceneState(
     val timerValue: Int = 0,
     val isUiAvailable: Boolean = true,
     val gameCellItems: List<GameCellItem> = emptyList(),
-    val lastTriggeredGameCell: GameCellItem? = null
+    val lastTriggeredGameCell: GameCellItem? = null,
+    val isGameFinished: Boolean = false
 )

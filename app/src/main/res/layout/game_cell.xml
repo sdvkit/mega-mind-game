@@ -4,6 +4,7 @@
     android:layout_width="@dimen/game_cell_size"
     android:layout_height="@dimen/game_cell_size"
     android:padding="@dimen/padding_extra_small"
+    android:layout_margin="@dimen/padding_extra_extra_small"
     android:background="@drawable/game_cell_background">
 
     <ImageView

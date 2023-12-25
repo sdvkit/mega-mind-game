@@ -18,5 +18,16 @@
     <fragment
         android:id="@+id/gameSceneScreen"
         android:name="com.sulitsa.dev.megamindgames.presentation.game.GameSceneScreen"
-        android:label="GameSceneScreen" />
+        android:label="GameSceneScreen" >
+        <action
+            android:id="@+id/action_gameSceneScreen_to_endGamePopupScreen"
+            app:destination="@id/endGamePopupScreen"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/gameSceneScreen"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/endGamePopupScreen"
+        android:name="com.sulitsa.dev.megamindgames.presentation.endgame.EndGamePopupScreen"
+        android:label="EndGamePopupScreen" />
 </navigation>

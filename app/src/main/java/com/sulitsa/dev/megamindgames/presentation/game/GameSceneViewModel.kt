@@ -2,10 +2,12 @@ package com.sulitsa.dev.megamindgames.presentation.game
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sulitsa.dev.megamindgames.domain.usecase.GetPreparedGems
 import com.sulitsa.dev.megamindgames.presentation.common.GameCellItem
+import com.sulitsa.dev.megamindgames.util.Constants
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -40,8 +42,15 @@ class GameSceneViewModel @Inject constructor(
                 startTimer()
             }
 
+            is GameSceneEvent.StopTimer -> {
+                startTimer()
+            }
+
             is GameSceneEvent.TriggerGameCell -> {
-                triggerAndCompareGem(gameCell = event.gameCell)
+                triggerAndCompareGem(
+                    gameCell = event.gameCell,
+                    ifGemsAreDifferentAction = event.ifGemsAreDifferentAction
+                )
             }
 
             is GameSceneEvent.ChangeUIAvailability -> {
@@ -55,9 +64,25 @@ class GameSceneViewModel @Inject constructor(
     }
 
     private fun saveGameCellItems(gameCellItems: List<GameCellItem>) {
+        logGeneratedGameCellItems(gameCellItems = gameCellItems)
         _state.update { currentState ->
             currentState.copy(gameCellItems = gameCellItems)
         }
+    }
+
+    private fun logGeneratedGameCellItems(gameCellItems: List<GameCellItem>) {
+        val logString = StringBuilder()
+
+        for (index in gameCellItems.indices) {
+            val gameCell = gameCellItems[index]
+            logString.append("${gameCell.getGemId() - 1}_")
+
+            if ((index + 1) % 4 == 0) {
+                logString.append("\n")
+            }
+        }
+
+        Log.i("__GAME__", logString.toString())
     }
 
     private fun changeUiAvailability(isAvailable: Boolean) {
@@ -66,7 +91,10 @@ class GameSceneViewModel @Inject constructor(
         }
     }
 
-    private fun triggerAndCompareGem(gameCell: GameCellItem) {
+    private fun triggerAndCompareGem(
+        gameCell: GameCellItem,
+        ifGemsAreDifferentAction: (GameCellItem, GameCellItem) -> Unit
+    ) {
         viewModelScope.launch {
             if (_state.value.lastTriggeredGameCell == null) {
                 _state.update { currentState ->
@@ -94,10 +122,12 @@ class GameSceneViewModel @Inject constructor(
                 }
 
                 else -> {
-                    delay(1_500)
+                    delay(Constants.AFTER_MISTAKE_DELAY)
+
                     gameCell.hideGem()
                     _state.value.lastTriggeredGameCell!!.hideGem()
                     _state.value.lastTriggeredGameCell!!.isCellEnabled = true
+                    ifGemsAreDifferentAction(gameCell, _state.value.lastTriggeredGameCell!!)
 
                     _state.update { currentState ->
                         currentState.copy(lastTriggeredGameCell = null)
@@ -106,6 +136,19 @@ class GameSceneViewModel @Inject constructor(
             }
 
             onEvent(GameSceneEvent.ChangeUIAvailability(isAvailable = true))
+            checkIfGameIsFinished()
+        }
+    }
+
+    private fun checkIfGameIsFinished() {
+        val enabledGameCells = _state.value.gameCellItems.filter {
+            gameCellItem -> gameCellItem.isGemEnabled()
+        }
+
+        if (enabledGameCells.isEmpty()) {
+            _state.update { currentState ->
+                currentState.copy(isGameFinished = true)
+            }
         }
     }
 
@@ -117,6 +160,10 @@ class GameSceneViewModel @Inject constructor(
                 currentState.copy(gems = gems)
             }
         }
+    }
+
+    private fun stopTimer() {
+        mainHandler.removeCallbacks(timerRunnable)
     }
 
     private fun startTimer() {
