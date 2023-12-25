@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.sulitsa.dev.megamindgames.R
 import com.sulitsa.dev.megamindgames.databinding.MenuViewScreenBinding
 import com.sulitsa.dev.megamindgames.presentation.injectDependencies
 import com.sulitsa.dev.megamindgames.presentation.navigateTo
+import com.sulitsa.dev.megamindgames.util.Constants
 import com.sulitsa.dev.megamindgames.util.Formatter
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -38,6 +40,16 @@ class MenuViewScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         configureState()
         configureClickListeners()
+        configureCoinsCount()
+    }
+
+    private fun configureCoinsCount() {
+        val args = arguments ?: return
+        val shouldUpdateCoinsCount = args.getBoolean(Constants.SHOULD_UPDATE_COINS_ARG_KEY, false)
+
+        if (shouldUpdateCoinsCount) {
+            menuViewModel.onEvent(MenuEvent.GetCoinsCount)
+        }
     }
 
     private fun configureState() {
@@ -53,8 +65,23 @@ class MenuViewScreen : Fragment() {
     }
 
     private fun configureClickListeners() {
-        binding.playButton.setOnClickListener {
-            navigateTo(resId = R.id.action_menuViewScreen_to_gameSceneScreen)
+        with (binding) {
+            playButton.setOnClickListener {
+                navigateTo(
+                    resId = R.id.action_menuViewScreen_to_gameSceneScreen,
+                    args = Bundle().apply {
+                        putBoolean(Constants.SHOULD_NEW_GAME_ARG_KEY, true)
+                    }
+                )
+            }
+
+            privacyPolicyButton.setOnClickListener {
+                Toast.makeText(requireContext(), "Privacy policy", Toast.LENGTH_LONG).show()
+            }
+
+            settingButton.setOnClickListener {
+                Toast.makeText(requireContext(), "Settings", Toast.LENGTH_LONG).show()
+            }
         }
     }
 }

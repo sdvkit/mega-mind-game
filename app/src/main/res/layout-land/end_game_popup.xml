@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="@dimen/trophy_image_land_size"
+            android:layout_height="@dimen/trophy_image_land_size"
+            android:layout_margin="@dimen/padding_medium"
+            android:src="@drawable/img_trophy_512"
+            app:layout_constraintBottom_toTopOf="@+id/congratulationsTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/congratulationsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/padding_extra_small"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/congratulations"
+            android:textAllCaps="true"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="@dimen/text_size_extra_big"
+            app:layout_constraintBottom_toTopOf="@+id/greatYouWonTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/greatYouWonTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
+            android:text="@string/great_you_won"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="@dimen/text_size_big"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="@dimen/coins_result_width"
+            android:layout_height="wrap_content"
+            android:background="@drawable/coins_result_background"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/padding_small"
+            android:layout_marginTop="@dimen/padding_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/greatYouWonTextView">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/coin_icon_size"
+                android:layout_height="@dimen/coin_icon_size"
+                android:layout_marginEnd="@dimen/padding_small"
+                android:src="@drawable/ic_coin_512" />
+
+            <TextView
+                android:id="@+id/coinCountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/padding_medium"
+                android:ellipsize="end"
+                android:fontFamily="@font/inter_bold"
+                android:maxWidth="@dimen/max_text_width"
+                android:maxLines="1"
+                android:text="@string/zero_value"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/doubleRewardButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_small"
+            android:layout_marginEnd="@dimen/padding_small"
+            android:fontFamily="@font/inter_bold"
+            android:minHeight="@dimen/double_reward_button_min_height"
+            android:padding="@dimen/padding_small"
+            android:text="@string/double_reward"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintEnd_toStartOf="@+id/homeButton"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <ImageButton
+            android:id="@+id/homeButton"
+            android:layout_width="@dimen/home_button_size"
+            android:layout_height="@dimen/home_button_size"
+            android:background="@drawable/default_button_background"
+            android:src="@drawable/ic_home_24"
+            app:layout_constraintBottom_toBottomOf="@+id/doubleRewardButton"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="@+id/doubleRewardButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

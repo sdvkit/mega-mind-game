@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/settingButton"
         android:layout_width="@dimen/privacy_policy_button_size"
         android:layout_height="@dimen/privacy_policy_button_size"
         android:layout_marginTop="@dimen/padding_big"
@@ -44,7 +44,7 @@
         android:id="@+id/logoImageView"
         android:layout_width="@dimen/game_logo_size"
         android:layout_height="@dimen/game_logo_size"
-        android:src="@drawable/ic_logo_512"
+        android:src="@drawable/img_logo_512"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
     <Button
         android:id="@+id/playButton"
         android:layout_width="@dimen/play_button_width"
-        android:layout_height="@dimen/play_button_height"
+        android:layout_height="wrap_content"
         android:text="@string/play"
         android:textAllCaps="true"
         android:textSize="@dimen/text_size_big"
@@ -64,13 +64,15 @@
         app:layout_constraintTop_toBottomOf="@id/logoImageView"/>
 
     <ImageButton
+        android:id="@+id/privacyPolicyButton"
         android:layout_width="@dimen/privacy_policy_button_size"
         android:layout_height="@dimen/privacy_policy_button_size"
         android:layout_margin="@dimen/padding_small"
         android:background="@drawable/default_button_background"
         android:src="@drawable/privacy_policy"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton"
-        app:layout_constraintStart_toStartOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        app:layout_constraintEnd_toEndOf="@+id/settingButton"
+        app:layout_constraintStart_toStartOf="@+id/settingButton"
+        app:layout_constraintTop_toBottomOf="@+id/settingButton"
+        app:tint="?attr/colorOnSurfaceVariant" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

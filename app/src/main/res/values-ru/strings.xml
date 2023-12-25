@@ -4,4 +4,7 @@
     <string name="zero_value">0</string>
     <string name="play">Играть</string>
     <string name="gameplay_description">Продолжайте сопоставлять два одинаковых объекта до тех пор, пока их пар больше не останется и вы не очистите игровое поле.</string>
+    <string name="great_you_won">Отлично! Ты победил!</string>
+    <string name="congratulations">Поздравляем!</string>
+    <string name="double_reward">Удвоить награду</string>
 </resources>

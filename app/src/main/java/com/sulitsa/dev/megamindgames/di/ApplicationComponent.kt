@@ -3,6 +3,7 @@ package com.sulitsa.dev.megamindgames.di
 import com.sulitsa.dev.megamindgames.di.modules.ContextModule
 import com.sulitsa.dev.megamindgames.di.modules.ManagerModule
 import com.sulitsa.dev.megamindgames.di.modules.RepositoryModule
+import com.sulitsa.dev.megamindgames.presentation.endgame.EndGamePopupScreen
 import com.sulitsa.dev.megamindgames.presentation.game.GameSceneScreen
 import com.sulitsa.dev.megamindgames.presentation.menu.MenuViewScreen
 import dagger.Component
@@ -17,4 +18,5 @@ import javax.inject.Singleton
 interface ApplicationComponent {
     fun inject(menuViewScreen: MenuViewScreen)
     fun inject(gameSceneScreen: GameSceneScreen)
+    fun inject(endGamePopupScreen: EndGamePopupScreen)
 }

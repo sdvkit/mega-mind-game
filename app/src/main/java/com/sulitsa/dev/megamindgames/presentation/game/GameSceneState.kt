@@ -5,6 +5,7 @@ import com.sulitsa.dev.megamindgames.presentation.common.GameCellItem
 
 data class GameSceneState(
     val gems: List<Gem> = emptyList(),
+    val coinsCount: Int = 0,
     val timerValue: Int = 0,
     val isUiAvailable: Boolean = true,
     val gameCellItems: List<GameCellItem> = emptyList(),

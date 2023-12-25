@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.sulitsa.dev.megamindgames.MegaMindGamesApp
+import com.sulitsa.dev.megamindgames.presentation.endgame.EndGamePopupScreen
 import com.sulitsa.dev.megamindgames.presentation.game.GameSceneScreen
 import com.sulitsa.dev.megamindgames.presentation.menu.MenuViewScreen
 
@@ -24,6 +25,10 @@ fun Fragment.injectDependencies() {
         }
 
         is GameSceneScreen -> {
+            appComponent.inject(this)
+        }
+
+        is EndGamePopupScreen -> {
             appComponent.inject(this)
         }
     }

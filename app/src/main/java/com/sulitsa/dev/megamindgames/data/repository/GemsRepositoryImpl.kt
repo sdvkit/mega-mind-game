@@ -25,6 +25,9 @@ class GemsRepositoryImpl : GemsRepository {
 
     override suspend fun shuffleAndDuplicateGems(): List<Gem> {
         val duplicatedGemsList = gems + gems
-        return duplicatedGemsList.shuffled()
+
+        return duplicatedGemsList.map { gem ->
+            gem.apply { isEnabled = true }
+        }.shuffled()
     }
 }

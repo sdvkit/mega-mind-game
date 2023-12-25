@@ -18,4 +18,8 @@ sealed class GameSceneEvent {
     class ChangeUIAvailability(val isAvailable: Boolean) : GameSceneEvent()
 
     class SaveGameCellItems(val gameCellItems: List<GameCellItem>) : GameSceneEvent()
+
+    data object GetCoinsCount : GameSceneEvent()
+
+    data object StartNewGame : GameSceneEvent()
 }

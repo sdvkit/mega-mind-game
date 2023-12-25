@@ -3,6 +3,7 @@ package com.sulitsa.dev.megamindgames.presentation.game
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,8 +45,23 @@ class GameSceneScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        configureGameProgress()
         configureState()
         configureTimerAnimation()
+    }
+
+    private fun configureGameProgress() {
+        val args = arguments ?: return
+
+
+        val shouldStartNewGame = args.getBoolean(Constants.SHOULD_NEW_GAME_ARG_KEY, false)
+
+        Log.i("____", shouldStartNewGame.toString())
+
+        if (shouldStartNewGame) {
+            gameSceneViewModel.onEvent(GameSceneEvent.StartNewGame)
+            args.clear()
+        }
     }
 
     private fun configureState() {
@@ -58,6 +74,7 @@ class GameSceneScreen : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun configureViewsByState(state: GameSceneState) {
+        binding.coinCountTextView.text = Formatter.formatCoins(coins = state.coinsCount)
         binding.timerTextView.text = Formatter.formatSeconds(seconds = state.timerValue)
 
         checkIfGameIsFinished(state = state)

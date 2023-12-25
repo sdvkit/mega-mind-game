@@ -12,23 +12,28 @@
     <dimen name="text_size_medium_smaller">16sp</dimen>
     <dimen name="text_size_medium">20sp</dimen>
     <dimen name="text_size_big">24sp</dimen>
+    <dimen name="text_size_extra_big">28sp</dimen>
     <dimen name="max_text_width">100dp</dimen>
     <dimen name="timer_text_width">155dp</dimen>
     <dimen name="gameplay_description_width">340dp</dimen>
 
-    <!-- Icons -->
+    <!-- Icons and Images -->
     <dimen name="launcher_icon_size">45dp</dimen>
     <dimen name="launcher_background_size">100dp</dimen>
     <dimen name="game_logo_size">160dp</dimen>
     <dimen name="coin_icon_size">40dp</dimen>
     <dimen name="privacy_policy_icon_size">40dp</dimen>
     <dimen name="timer_icon_size">56dp</dimen>
+    <dimen name="trophy_image_size">220dp</dimen>
+    <dimen name="trophy_image_land_size">150dp</dimen>
 
     <!-- Buttons -->
-    <dimen name="play_button_height">60dp</dimen>
     <dimen name="play_button_width">180dp</dimen>
+    <dimen name="double_reward_button_width">250dp</dimen>
+    <dimen name="double_reward_button_min_height">72dp</dimen>
     <dimen name="settings_button_size">32dp</dimen>
     <dimen name="privacy_policy_button_size">56dp</dimen>
+    <dimen name="home_button_size">72dp</dimen>
 
     <!-- Radius -->
     <dimen name="radius_medium">18dp</dimen>
@@ -36,4 +41,5 @@
 
     <!-- Another -->
     <dimen name="game_cell_size">72dp</dimen>
+    <dimen name="coins_result_width">300dp</dimen>
 </resources>

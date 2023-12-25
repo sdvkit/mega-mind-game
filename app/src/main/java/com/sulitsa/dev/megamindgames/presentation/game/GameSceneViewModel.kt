@@ -2,9 +2,9 @@ package com.sulitsa.dev.megamindgames.presentation.game
 
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sulitsa.dev.megamindgames.domain.usecase.GetCoinsCount
 import com.sulitsa.dev.megamindgames.domain.usecase.GetPreparedGems
 import com.sulitsa.dev.megamindgames.presentation.common.GameCellItem
 import com.sulitsa.dev.megamindgames.util.Constants
@@ -18,7 +18,8 @@ import javax.inject.Singleton
 
 @Singleton
 class GameSceneViewModel @Inject constructor(
-    private val getPreparedGems: GetPreparedGems
+    private val getPreparedGems: GetPreparedGems,
+    private val getCoinsCount: GetCoinsCount
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(GameSceneState())
@@ -26,11 +27,6 @@ class GameSceneViewModel @Inject constructor(
 
     private val mainHandler = Handler(Looper.getMainLooper())
     private lateinit var timerRunnable: Runnable
-
-    init {
-        onEvent(GameSceneEvent.GetGems)
-        onEvent(GameSceneEvent.StartTimer)
-    }
 
     fun onEvent(event: GameSceneEvent) {
         when (event) {
@@ -43,7 +39,7 @@ class GameSceneViewModel @Inject constructor(
             }
 
             is GameSceneEvent.StopTimer -> {
-                startTimer()
+                stopTimer()
             }
 
             is GameSceneEvent.TriggerGameCell -> {
@@ -60,29 +56,41 @@ class GameSceneViewModel @Inject constructor(
             is GameSceneEvent.SaveGameCellItems -> {
                 saveGameCellItems(gameCellItems = event.gameCellItems)
             }
+
+            is GameSceneEvent.GetCoinsCount -> {
+                getLocalCoinsCount()
+            }
+
+            is GameSceneEvent.StartNewGame -> {
+                startNewGame()
+            }
+        }
+    }
+
+    private fun startNewGame() {
+        _state.update { _ ->
+            GameSceneState()
+        }
+
+        onEvent(GameSceneEvent.GetGems)
+        onEvent(GameSceneEvent.StartTimer)
+        onEvent(GameSceneEvent.GetCoinsCount)
+    }
+
+    private fun getLocalCoinsCount() {
+        viewModelScope.launch {
+            val coinsCount = getCoinsCount()
+
+            _state.update { currentState ->
+                currentState.copy(coinsCount = coinsCount)
+            }
         }
     }
 
     private fun saveGameCellItems(gameCellItems: List<GameCellItem>) {
-        logGeneratedGameCellItems(gameCellItems = gameCellItems)
         _state.update { currentState ->
             currentState.copy(gameCellItems = gameCellItems)
         }
-    }
-
-    private fun logGeneratedGameCellItems(gameCellItems: List<GameCellItem>) {
-        val logString = StringBuilder()
-
-        for (index in gameCellItems.indices) {
-            val gameCell = gameCellItems[index]
-            logString.append("${gameCell.getGemId() - 1}_")
-
-            if ((index + 1) % 4 == 0) {
-                logString.append("\n")
-            }
-        }
-
-        Log.i("__GAME__", logString.toString())
     }
 
     private fun changeUiAvailability(isAvailable: Boolean) {

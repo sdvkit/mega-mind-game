@@ -29,5 +29,11 @@
     <fragment
         android:id="@+id/endGamePopupScreen"
         android:name="com.sulitsa.dev.megamindgames.presentation.endgame.EndGamePopupScreen"
-        android:label="EndGamePopupScreen" />
+        android:label="EndGamePopupScreen" >
+        <action
+            android:id="@+id/action_endGamePopupScreen_to_menuViewScreen"
+            app:destination="@id/menuViewScreen"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/endGamePopupScreen"/>
+    </fragment>
 </navigation>
