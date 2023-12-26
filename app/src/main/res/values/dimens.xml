@@ -14,7 +14,7 @@
     <dimen name="text_size_big">24sp</dimen>
     <dimen name="text_size_extra_big">28sp</dimen>
     <dimen name="max_text_width">100dp</dimen>
-    <dimen name="timer_text_width">155dp</dimen>
+    <dimen name="timer_text_width">165dp</dimen>
     <dimen name="gameplay_description_width">340dp</dimen>
 
     <!-- Icons and Images -->
@@ -28,7 +28,7 @@
     <dimen name="trophy_image_land_size">150dp</dimen>
 
     <!-- Buttons -->
-    <dimen name="play_button_width">180dp</dimen>
+    <dimen name="play_button_width">200dp</dimen>
     <dimen name="double_reward_button_width">250dp</dimen>
     <dimen name="double_reward_button_min_height">72dp</dimen>
     <dimen name="settings_button_size">32dp</dimen>

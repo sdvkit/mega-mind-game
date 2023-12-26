@@ -1,88 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/timerImageView"
-        android:layout_width="@dimen/timer_icon_size"
-        android:layout_height="@dimen/timer_icon_size"
-        android:layout_marginStart="@dimen/padding_medium"
-        android:layout_marginTop="@dimen/padding_big"
-        android:src="@drawable/ic_timer_24"
-        android:elevation="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/timerTextView"
-        android:layout_width="@dimen/timer_text_width"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="-40dp"
-        android:background="@drawable/timer_state"
-        android:fontFamily="@font/inter_medium"
-        android:paddingStart="@dimen/padding_big"
-        android:paddingTop="@dimen/padding_extra_small"
-        android:paddingEnd="@dimen/padding_small"
-        android:paddingBottom="@dimen/padding_extra_small"
-        android:text="@string/zero_value"
-        android:textColor="?attr/colorOnSurfaceVariant"
-        android:textSize="@dimen/text_size_medium"
-        app:layout_constraintBottom_toBottomOf="@+id/timerImageView"
-        app:layout_constraintStart_toEndOf="@+id/timerImageView"
-        app:layout_constraintTop_toTopOf="@+id/timerImageView" />
+        <ImageView
+            android:id="@+id/timerImageView"
+            android:layout_width="@dimen/timer_icon_size"
+            android:layout_height="@dimen/timer_icon_size"
+            android:layout_marginStart="@dimen/padding_medium"
+            android:layout_marginTop="@dimen/padding_big"
+            android:src="@drawable/ic_timer_24"
+            android:elevation="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/coinImageView"
-        android:layout_width="@dimen/coin_icon_size"
-        android:layout_height="@dimen/coin_icon_size"
-        android:src="@drawable/ic_coin_512"
-        android:layout_marginTop="@dimen/padding_small"
-        app:layout_constraintEnd_toEndOf="@+id/timerImageView"
-        app:layout_constraintStart_toStartOf="@+id/timerImageView"
-        app:layout_constraintTop_toBottomOf="@+id/timerImageView" />
+        <TextView
+            android:id="@+id/timerTextView"
+            android:layout_width="@dimen/timer_text_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-40dp"
+            android:background="@drawable/timer_state"
+            android:fontFamily="@font/inter_medium"
+            android:paddingStart="@dimen/padding_big"
+            android:paddingTop="@dimen/padding_extra_small"
+            android:paddingEnd="@dimen/padding_small"
+            android:paddingBottom="@dimen/padding_extra_small"
+            android:text="@string/zero_value"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintBottom_toBottomOf="@+id/timerImageView"
+            app:layout_constraintStart_toEndOf="@+id/timerImageView"
+            app:layout_constraintTop_toTopOf="@+id/timerImageView" />
 
-    <TextView
-        android:id="@+id/coinCountTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding_small"
-        android:ellipsize="end"
-        android:fontFamily="@font/inter_bold"
-        android:maxWidth="@dimen/max_text_width"
-        android:maxLines="1"
-        android:text="@string/zero_value"
-        android:textSize="@dimen/text_size_medium"
-        app:layout_constraintBottom_toBottomOf="@+id/coinImageView"
-        app:layout_constraintStart_toEndOf="@+id/coinImageView"
-        app:layout_constraintTop_toTopOf="@+id/coinImageView" />
+        <ImageView
+            android:id="@+id/coinImageView"
+            android:layout_width="@dimen/coin_icon_size"
+            android:layout_height="@dimen/coin_icon_size"
+            android:src="@drawable/ic_coin_512"
+            android:layout_marginTop="@dimen/padding_small"
+            app:layout_constraintEnd_toEndOf="@+id/timerImageView"
+            app:layout_constraintStart_toStartOf="@+id/timerImageView"
+            app:layout_constraintTop_toBottomOf="@+id/timerImageView" />
 
-    <TextView
-        android:id="@+id/gameplayDescriptionTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_medium"
-        android:layout_marginEnd="@dimen/padding_small"
-        android:fontFamily="@font/inter_medium"
-        android:text="@string/gameplay_description"
-        android:textAlignment="textStart"
-        android:textColor="?attr/colorOnSurface"
-        android:textSize="@dimen/text_size_medium_smaller"
-        app:layout_constraintEnd_toStartOf="@+id/gameCellsGridLayout"
-        app:layout_constraintStart_toStartOf="@+id/coinImageView"
-        app:layout_constraintTop_toBottomOf="@+id/coinImageView"
-        tools:layout_width="@dimen/gameplay_description_width"/>
+        <TextView
+            android:id="@+id/coinCountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_small"
+            android:ellipsize="end"
+            android:fontFamily="@font/inter_bold"
+            android:maxWidth="@dimen/max_text_width"
+            android:maxLines="1"
+            android:text="@string/zero_value"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintBottom_toBottomOf="@+id/coinImageView"
+            app:layout_constraintStart_toEndOf="@+id/coinImageView"
+            app:layout_constraintTop_toTopOf="@+id/coinImageView" />
 
-    <GridLayout
-        android:id="@+id/gameCellsGridLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:columnCount="5"
-        android:layout_marginEnd="@dimen/padding_extra_small"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/gameplayDescriptionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_medium"
+            android:layout_marginEnd="@dimen/padding_small"
+            android:fontFamily="@font/inter_medium"
+            android:text="@string/gameplay_description"
+            android:textAlignment="textStart"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="@dimen/text_size_medium_smaller"
+            app:layout_constraintEnd_toStartOf="@+id/gameCellsGridLayout"
+            app:layout_constraintStart_toStartOf="@+id/coinImageView"
+            app:layout_constraintTop_toBottomOf="@+id/coinImageView"
+            tools:layout_width="@dimen/gameplay_description_width"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <GridLayout
+            android:id="@+id/gameCellsGridLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="5"
+            android:layout_marginEnd="@dimen/padding_extra_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

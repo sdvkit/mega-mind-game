@@ -44,9 +44,9 @@
             android:layout_height="@dimen/coin_icon_size"
             android:layout_marginEnd="@dimen/padding_small"
             android:src="@drawable/ic_coin_512"
-            app:layout_constraintBottom_toBottomOf="@+id/timerTextView"
+            app:layout_constraintBottom_toBottomOf="@+id/coinCountTextView"
             app:layout_constraintEnd_toStartOf="@+id/coinCountTextView"
-            app:layout_constraintTop_toTopOf="@+id/timerTextView" />
+            app:layout_constraintTop_toTopOf="@+id/coinCountTextView" />
 
         <TextView
             android:id="@+id/coinCountTextView"
