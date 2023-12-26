@@ -21,8 +21,6 @@ class EndGamePopupScreen : Fragment() {
 
     @Inject lateinit var endGamePopupViewModel: EndGamePopupViewModel
     private lateinit var binding: EndGamePopupBinding
-    private var coinsCount: Int = 0
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         injectDependencies()
@@ -47,6 +45,9 @@ class EndGamePopupScreen : Fragment() {
     private fun configureButtons() {
         with (binding) {
             homeButton.setOnClickListener {
+                val event = EndGamePopupEvent.UpgradeCoinsValue
+                endGamePopupViewModel.onEvent(event)
+
                 navigateTo(
                     resId = R.id.action_endGamePopupScreen_to_menuViewScreen,
                     args = Bundle().apply {
@@ -56,7 +57,8 @@ class EndGamePopupScreen : Fragment() {
             }
 
             doubleRewardButton.setOnClickListener {
-                val event = EndGamePopupEvent.UpgradeCoinsValue(coins = coinsCount)
+                val event = EndGamePopupEvent.UpgradeCoinsValue
+                endGamePopupViewModel.onEvent(event)
                 endGamePopupViewModel.onEvent(event)
 
                 Toast.makeText(requireContext(), "Reward doubled!", Toast.LENGTH_LONG).show()
@@ -81,13 +83,6 @@ class EndGamePopupScreen : Fragment() {
 
     private fun configureViewsByState(state: EndGamePopupState) {
         binding.coinCountTextView.text = Formatter.formatCoins(state.coinsCount)
-        saveCoinsResult(coins = state.coinsCount)
-    }
-
-    private fun saveCoinsResult(coins: Int) {
-        coinsCount = coins
-        val event = EndGamePopupEvent.UpgradeCoinsValue(coins = coins)
-        endGamePopupViewModel.onEvent(event)
     }
 
     private fun configureCoinsResult() {

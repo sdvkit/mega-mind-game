@@ -20,6 +20,12 @@ class EndGamePopupViewModel @Inject constructor(
     private val _state = MutableStateFlow(EndGamePopupState())
     val state: StateFlow<EndGamePopupState> = _state
 
+    init {
+        _state.update { _ ->
+            EndGamePopupState()
+        }
+    }
+
     fun onEvent(event: EndGamePopupEvent) {
         when (event) {
             is EndGamePopupEvent.CalculateCoins -> {
@@ -27,7 +33,7 @@ class EndGamePopupViewModel @Inject constructor(
             }
 
             is EndGamePopupEvent.UpgradeCoinsValue -> {
-                upgradeLocalCoinsValue(coins = event.coins)
+                upgradeLocalCoinsValue()
             }
         }
     }
@@ -42,9 +48,9 @@ class EndGamePopupViewModel @Inject constructor(
         }
     }
 
-    private fun upgradeLocalCoinsValue(coins: Int) {
+    private fun upgradeLocalCoinsValue() {
         viewModelScope.launch {
-            upgradeCoinsValue(coins = coins)
+            upgradeCoinsValue(coins = _state.value.coinsCount)
         }
     }
 }

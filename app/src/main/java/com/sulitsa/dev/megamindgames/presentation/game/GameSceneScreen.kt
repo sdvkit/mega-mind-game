@@ -3,7 +3,6 @@ package com.sulitsa.dev.megamindgames.presentation.game
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,10 +52,7 @@ class GameSceneScreen : Fragment() {
     private fun configureGameProgress() {
         val args = arguments ?: return
 
-
         val shouldStartNewGame = args.getBoolean(Constants.SHOULD_NEW_GAME_ARG_KEY, false)
-
-        Log.i("____", shouldStartNewGame.toString())
 
         if (shouldStartNewGame) {
             gameSceneViewModel.onEvent(GameSceneEvent.StartNewGame)
